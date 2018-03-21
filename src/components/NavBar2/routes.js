@@ -6,23 +6,23 @@ export default [[
   },
   {
     text: 'Company',
-    path: '/company',
+    path: '/',
     subText: 'Learn a little about our company.'
   },
   {
     text: 'Services',
-    path: '/services',
+    path: '/',
     subText: 'Check out the services we offer.'
   },
   {
     text: 'Work',
-    path: '/work',
+    path: '/',
     subText: 'Take a look at our portfolio.'
   }
 ],
   {
     text: 'Contact',
-    path: '/contact',
+    path: '/',
     subText: 'Have questions? Drop us a line.'
   }
 ]

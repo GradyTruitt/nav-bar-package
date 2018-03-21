@@ -88,16 +88,13 @@ const NavLink = styled(Link)`
   padding: 0 5px 5px;
   font-size: 15pt;
   letter-spacing: -1px;
+  color: ${props => props.theme.primaryColor};
   font-family: ${props => props.theme.bodyFont};
   font-weight: ${props => props.theme.extraBold};
 
   &:hover {
-    color: ${props => props.theme.primaryColor};
+    color: ${props => props.theme.accentColor3};
     transition: 0.3s;
-  }
-
-  &:active {
-    color: ${props => props.theme.primaryColor};
   }
 `
 const Button = styled(Link)`

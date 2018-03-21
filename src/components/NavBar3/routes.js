@@ -1,4 +1,5 @@
-export default [
+//Main Navigation Items
+export default [[
   {
     text: 'Home',
     path: '/',
@@ -18,7 +19,8 @@ export default [
     text: 'Work',
     path: '/',
     subText: 'Take a look at our portfolio.'
-  },
+  }
+],
   {
     text: 'Contact',
     path: '/',

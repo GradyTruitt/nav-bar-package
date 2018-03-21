@@ -7,6 +7,7 @@ import backgroundImage from 'assets/background.jpg'
 import ScrollToTop from 'components/ScrollToTop'
 import NavBar from 'components/NavBar1'
 import NavBar2 from 'components/NavBar2'
+import NavBar3 from 'components/NavBar3'
 
 import Home from './Home'
 import Services from './Services'
@@ -34,6 +35,8 @@ render() {
       ? (<NavBar/>)
       : menu === 'Two'
       ? (<NavBar2/>)
+      : menu === 'Three'
+      ? (<NavBar3/>)
       :
       null
       }
@@ -47,6 +50,7 @@ render() {
               <Route path="/work" component={Work} />
               <Route path="/contact" component={Contact} />
             </Switch>
+            <Scroll show={menu}>Scroll to bottom for effect.</Scroll>
             <Buttons>
               <Button
                 value="One"
@@ -79,8 +83,8 @@ render() {
 }
 const Background = styled.div`
   width: 100%;
-  padding-bottom: 1000px;
-  background-color: ${props => props.theme.backgroundColor};
+  padding-bottom: calc(100vh + 100px);
+  background-color: ${props => props.theme.primaryColor};
 `
 const Header = styled.div`
   width: 100%;
@@ -102,6 +106,19 @@ const Overlay = styled.div`
   @media (max-width: ${props => props.theme.desktop}px) {
     padding: 100px 0 0;
   }
+`
+const Scroll = styled.h1`
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 150px;
+  font-size: 20pt;
+  font-family: ${props => props.theme.fontFamily};
+  font-weight: ${props => props.theme.extraBold};
+  color: ${props => props.theme.primaryColor};
+  transition-duration: 0.5s;
+  color: ${props => props.theme.primaryColor};
+  opacity: ${props => props.show !== 'One' ? 1 : 0};
 `
 const Buttons = styled.div`
   padding: 45px 10%;
