@@ -102,7 +102,7 @@ const SideNavItems = styled.div`
 `
 const NavLink = styled(Link)`
   margin: 40px 0 10px;
-  font-size: 18pt;
+  font-size: 24pt;
   opacity: 0;
   font-family: ${props => props.theme.fontFamily};
   font-weight: ${props => props.theme.extraBold};

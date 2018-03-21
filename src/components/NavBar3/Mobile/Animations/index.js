@@ -13,9 +13,9 @@ export default {
     let arr = Array.from(items.children);
 
     if (!open) {
-      TweenMax.to(tray, 0.3, { width: 270, boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.2)' })
+      TweenMax.to(tray, 0.3, { width: 300, boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.2)' })
       tl.add(TweenMax.to(items, 0.3, { width: 200 }))
-      tl.add(TweenMax.staggerTo(arr, 0.2, { delay: 0.3, opacity: 1, margin: '20px 0' }, 0.1))
+      tl.add(TweenMax.staggerTo(arr, 0.2, { delay: 0.3, opacity: 1, margin: '15px 0' }, 0.1))
     }
     else {
       tl.add(TweenMax.staggerTo(arr.reverse(), 0.2, { opacity: 0, margin: '60px 0 10px' }, 0.1))
