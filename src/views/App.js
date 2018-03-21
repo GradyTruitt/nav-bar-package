@@ -119,6 +119,10 @@ const Scroll = styled.h1`
   transition-duration: 0.5s;
   color: ${props => props.theme.primaryColor};
   opacity: ${props => props.show !== 'One' ? 1 : 0};
+
+  @media (max-width: ${props => props.theme.desktop}px) {
+    bottom: 230px;
+  }
 `
 const Buttons = styled.div`
   padding: 45px 10%;
