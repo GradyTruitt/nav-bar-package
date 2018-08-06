@@ -50,7 +50,6 @@ render() {
               <Route path="/work" component={Work} />
               <Route path="/contact" component={Contact} />
             </Switch>
-            <Scroll show={menu}>Scroll to bottom for effect.</Scroll>
             <Buttons>
               <Button
                 value="One"
@@ -73,6 +72,7 @@ render() {
                 >
                 Menu 3
               </Button>
+              <Scroll show={menu}>Scroll to bottom for effect.</Scroll>
             </Buttons>
           </Overlay>
         </Header>
@@ -108,35 +108,28 @@ const Overlay = styled.div`
   }
 `
 const Scroll = styled.h1`
-  position: absolute;
+  position: fixed;
   text-align: center;
   width: 100%;
-  bottom: 150px;
-  font-size: 20pt;
+  bottom: 10px;
+  font-size: 16pt;
   font-family: ${props => props.theme.fontFamily};
   font-weight: ${props => props.theme.extraBold};
   color: ${props => props.theme.primaryColor};
   transition-duration: 0.5s;
   color: ${props => props.theme.primaryColor};
   opacity: ${props => props.show !== 'One' ? 1 : 0};
-
-  @media (max-width: ${props => props.theme.desktop}px) {
-    bottom: 230px;
-  }
 `
 const Buttons = styled.div`
-  padding: 45px 10%;
+  padding: 10px 10% 40px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-
-  @media (max-width: ${props => props.theme.desktop}px) {
-    padding: 15px;
-  }
+  background-color: white;
 `
 const Button = styled.button`
   margin: 15px;

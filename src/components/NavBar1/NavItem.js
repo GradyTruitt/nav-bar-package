@@ -52,14 +52,15 @@ export default class NavItem extends Component {
 
 const Container = styled(Link)`
   display: block;
-  margin: 120px auto 80px;
-  width: 350px;
+  margin: 120px auto 15px;
+  width: 450px;
   opacity: 0;
   cursor: pointer;
+  display: none;
 
   @media (max-width: 950px){
-    margin: 60px auto;
-    width: 270px;
+    margin: 30px auto;
+    width: calc(100% - 40px);
   }
 `
 const Index = styled.h3`
@@ -71,7 +72,7 @@ const Index = styled.h3`
   transform: rotate(-90deg);
   width: 20px;
   pointer-events: none;
-
+  transition-duration: 0.2s;
 `
 const Text = styled.h1`
   font-family: ${props => props.theme.navFont};
@@ -80,9 +81,9 @@ const Text = styled.h1`
   color: white;
   margin: -30px 0 0 30px;
   opacity: ${props => props.hover ? 1 : props.active ? 1 : 0.3};
-  transition: .3s;
   pointer-events: none;
   text-shadow: 2px 2px 20px rgba(0, 0, 0, .25);
+  transition-duration: 0.2s;
 
   @media (max-width: 950px){
     margin: -22px 0 0 25px;
@@ -95,9 +96,9 @@ const Tagline = styled.h4`
   font-size: 14pt;
   font-weight: 600;
   color: ${props => props.theme.accentColor1};
-  transition: 0.3s;
   opacity ${props => props.hover ? 1 : props.active ? 1 : 0.3};
   pointer-events: none;
+  transition-duration: 0.2s;
 
   @media (max-width: 950px){
     font-size: 10pt;
@@ -106,12 +107,12 @@ const Tagline = styled.h4`
 const Line = styled.div`
   margin: -50px 0 0 0;
   position: absolute;
-  right: -20px;
+  right: 80px;
   width: ${props => props.hover ? 100 : 0}px;
   height: 8px;
   background-color: ${props => props.theme.accentColor1};
-  transition: 0.2s;
   pointer-events: none;
+  transition-duration: 0.2s;
 
   @media (max-width: 950px){
     display: none;

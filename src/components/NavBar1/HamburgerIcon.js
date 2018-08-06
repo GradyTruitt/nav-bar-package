@@ -1,53 +1,111 @@
-import React from 'react'
+import React, { Fragment, Component } from 'react'
 import styled from 'styled-components'
 
-export default ({ open, click }) => (
-  <Container open={open} onClick={click}>
-    <Bar open={open} />
-    <Bar open={open} />
-    <Bar open={open} />
-  </Container>
-)
+export default class HamburgerIcon extends Component {
+
+  state = {
+    open: false
+  }
+
+  toggleNav = () => {
+    const { animating, click } = this.props
+    return !animating ?
+    (this.setState({ open: !this.state.open }),
+    click())
+    : null
+  }
+
+  render() {
+    const { open } = this.state
+    return (
+      <Container open={open} onClick={this.toggleNav}>
+        <OpenLine open={open} />
+        {open ?
+          <Fragment>
+            <CloseLine rotate='plus' open={open} />
+            <CloseLine rotate='munus' open={open} />
+          </Fragment>
+          :
+          null}
+        <OpenLine open={open} />
+        <OpenLine open={open} />
+      </Container>
+    )
+  }
+}
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   margin: 20px;
   width: 30px;
-  height: ${props => props.open ? '25px' : '20px'};
+  height: 20px;
   display: flex;
   flex-direction:column;
-  justify-content: ${props => props.open ? 'center' : 'space-between'};
+  justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 1002;
 
   @media (max-width: 950px) {
     right: 0;
     top: 5px;
   }
 `
-const Bar = styled.div`
+const OpenLine = styled.div`
+  position: absolute;
   width: 30px;
   height: 2px;
   background-color: white;
-  transform-origin: center;
-  transition-duration: 0.2s;
   opacity: ${props => props.open ? 0 : 1};
+  cursor: pointer;
+  transition-duration: 0.2s;
+  top: 9px;
 
   ${Container}:hover & {
     border-left: 30px solid ${props => props.theme.accentColor1};
   }
 
   &:first-of-type {
-    margin-bottom: ${props => props.open ? '-2px' : 0};
-    transition-duration: 0.5s;
-    transform: ${props => props.open ? 'rotate(135deg)' : 'none'};
-    opacity: 1;
+    top:  0px;
   }
 
   &:last-of-type {
-    margin-top: ${props => props.open ? '-2px' : 0};
-    transition-duration: 0.3s;
-    transform: ${props => props.open ? 'rotate(-135deg)' : 'none'};
-    opacity: 1;
+    top:  18px;
+  }
+`
+const CloseLine = styled.div`
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  transition-delay: ${props => props.open ? null : '0.2s'};
+  top: 9px;
+  transform-origin: 50%;
+  animation: ${props => props.rotate === 'plus' ? 'plus45 0.3s' : 'minus45 0.3s'};
+  animation-fill-mode: forwards;
+
+  ${Container}:hover & {
+    border-left: 15px solid ${props => props.theme.accentColor1};
+    border-right: 15px solid ${props => props.theme.accentColor1};
+  }
+
+  @keyframes plus45 {
+    from {
+      transform: rotate(0deg)
+    }
+    to {
+      transform: rotate(45deg)
+    }
+  }
+
+  @keyframes minus45 {
+    from {
+      transform: rotate(0deg)
+    }
+    to {
+      transform: rotate(-45deg)
+    }
   }
 `
